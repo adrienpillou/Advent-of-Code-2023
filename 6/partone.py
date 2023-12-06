@@ -12,7 +12,6 @@ for n, t in enumerate(time_range):
     i = 0
     ways = list()
     for i in range(t):
-        boat_speed = i
         d = i * (t - i)
         if d > distance_range[n]:
             ways.append(d)
