@@ -7,26 +7,20 @@ with open("in.txt") as file:
 time_range = [int(v) for v in re.findall("\d+", x[0])]
 distance_range = [int(v) for v in re.findall("\d+", x[1])]
 
-ways = list()
+ways_count = list()
 for n, t in enumerate(time_range):
-    print(f"\n--- {t} ---")
     i = 0
-    race_results = list()
-    while(t - i >= 0):
+    ways = list()
+    for i in range(t):
         boat_speed = i
-        d = boat_speed * (t - i)
-        race_results.append(d)
-        i += 1
-    print(race_results)
-    ways_count = 0
-    for r in race_results:
-        if r > distance_range[n]:
-            ways_count += 1
-    ways.append(ways_count)
+        d = i * (t - i)
+        if d > distance_range[n]:
+            ways.append(d)
+    ways_count.append(len(ways))
 
-solution = 1
-for w in ways:
-    solution *= w
+s = 1
+for w in ways_count:
+    s *= w
 
-print(solution)
+print(s)
 
